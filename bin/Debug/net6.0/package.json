@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@fullcalendar/angular": "^5.10.2",
+    "@fullcalendar/daygrid": "^5.10.1",
+    "@fullcalendar/interaction": "^5.10.1",
+    "@syncfusion/ej2-angular-calendars": "^19.4.54",
+    "@syncfusion/ej2-angular-schedule": "^19.4.52"
+  }
+}
