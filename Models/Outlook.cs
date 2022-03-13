@@ -9,7 +9,7 @@
          public string? DateData2 { get; set; }*/
         public string id { get; set; }
         public string? source { get; set; }
-      
+        public bool resolved { get; set; }
         public string? name{ get; set; }
         public string? title{ get; set; }
         public string title2 { get; set; }

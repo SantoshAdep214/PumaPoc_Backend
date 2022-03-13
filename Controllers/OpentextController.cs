@@ -38,9 +38,9 @@ namespace Puma_Poc.Controllers
                     string source = a.source;
                     int Due = a.due;
                     string title = a.title;
-
+                    bool resolved=a.resolved;
                     var date = DateTime.Today;
-                    var add = date.AddDays(-Due);
+                    var add = date.AddDays(Due);
                     string dateadd = add.ToString("dd'/'MM'/'yyyy");
 
                     List<Data> data1 = new List<Data>()
@@ -53,6 +53,7 @@ namespace Puma_Poc.Controllers
                                due=Due,
                                name =name,
                                title =title,
+                               resolved=resolved,
                              
                       }
                     };

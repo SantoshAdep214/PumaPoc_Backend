@@ -5,7 +5,7 @@ using Puma_Poc.Models;
 
 namespace Puma_Poc.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")]                               
     [ApiController]
     public class DataController : ControllerBase
     {
@@ -42,7 +42,7 @@ namespace Puma_Poc.Controllers
                     string source = a.source;
                     int Due = a.due;
                     string title = a.title;
-
+                    bool resolved = a.resolved;
                     var add = date.AddDays(Due);
                     string dateadd = add.ToString("dd'/'MM'/'yyyy");
                     List<Outlook> data1 = new List<Outlook>()
@@ -54,6 +54,7 @@ namespace Puma_Poc.Controllers
                                due4=Due,
                                name =name,
                                title2 =title,
+                               resolved=resolved,   
                       }
                     };
                     return data1;

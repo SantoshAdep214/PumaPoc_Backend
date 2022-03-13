@@ -31,7 +31,7 @@ namespace Puma_Poc.Controllers
                 if (id == "056")
                 {
                     int Due = a.due;
-                    var add = date.AddDays(-Due);
+                    var add = date.AddDays(Due);
                     string dateadd = add.ToString("dd'/'MM'/'yyyy");
                     string title = a.title;
                     string name = a.name;
