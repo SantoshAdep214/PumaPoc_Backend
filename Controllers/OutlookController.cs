@@ -25,12 +25,13 @@ namespace Puma_Poc.Controllers
             //Adobe.AdobeRoot adobe = JsonConvert.DeserializeObject<Adobe.AdobeRoot>(json);
 
             System.Diagnostics.Debug.WriteLine("dfdfdfdfdfdffffdfdfdf :" + data);
-
+           
+            
             // IEnumerable<Adobe> adobe = JsonConvert.DeserializeObject<IEnumerable<Adobe>>(json);
             foreach (var a in data)
             {
                 int id = a.id;
-              
+
                 if (id == 0214)
                 {
                     string name = a.name;
@@ -57,8 +58,9 @@ namespace Puma_Poc.Controllers
                     return data1;
                 }
             }
+           
             return null;
         }
-       
+      
     }
 }

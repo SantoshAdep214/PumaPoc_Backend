@@ -21,13 +21,20 @@ namespace Puma_Poc.Controllers
             string json = r.ReadToEnd();
             var data = JsonConvert.DeserializeObject<Data[]>(json);
 
-
+            
             System.Diagnostics.Debug.WriteLine("dfdfdfdfdfdffffdfdfdf :" + data);
 
             foreach (var a in data)
             {
+                int count=0;
                 int id = a.id;
-              
+                if (a.name == "Workday")
+                {
+                    
+                        count++;
+                    
+                }
+                System.Diagnostics.Debug.WriteLine("hello controller"+"count:"+count);
 
                 if (id == 123)
                 {
