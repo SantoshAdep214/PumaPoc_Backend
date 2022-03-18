@@ -48,6 +48,7 @@ namespace Puma_Poc.Controllers
                                name =name,
                                titleAdobe=title,
                                resolved=resolved,
+                               id=id,
                       }
                     };
                     return data2;

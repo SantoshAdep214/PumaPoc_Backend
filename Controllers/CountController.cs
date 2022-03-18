@@ -56,17 +56,52 @@ namespace Puma_Poc.Controllers
                 {
                     todoc++;
                 }
+               
                 count++;
 
+
                 System.Diagnostics.Debug.WriteLine("dfdfdfdfdfdffffdfdfdf :" +count);
+                if (a.name == "Adobe Sign" && a.resolved == true)
+                {
+                    count--;
+                    adobec--;
+                }
+                else if (a.name == "Workday" && a.resolved == true)
+                {
+                    count--;
+                    workdayc--;
+                }
+                else if (a.name == "Outlook" && a.resolved == true)
+                {
+                    count--;
+                    outlookc--;
+                }
+                else if (a.name == "SAP Concur" && a.resolved == true)
+                {
+                    count--;
+                    sapc--;
+                }
+                else if (a.name == "Opentext" && a.resolved == true)
+                {
+                    count--;
+                    openc--;
+                }
+               
+                else if (a.name == "TODO" && a.resolved == true)
+                {
+                    count--;
+                }
             }
 
-                List<Count> allcount = new List<Count>()
+
+
+
+            List<Count> allcount = new List<Count>()
               {
-                   
+                 
                       new Count()
                             {
-                             workdaycount = workdayc,
+                             workdaycount = workdayc, 
                                adobecount = adobec,
                                   sapcount=sapc,
                             opentextcount =openc,
@@ -77,8 +112,6 @@ namespace Puma_Poc.Controllers
                             }
                };
                 return allcount;
-            
-           
         }  
        
     }

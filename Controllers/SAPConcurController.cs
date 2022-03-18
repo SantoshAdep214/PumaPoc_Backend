@@ -22,19 +22,20 @@ namespace Puma_Poc.Controllers
 
             StreamReader r = new StreamReader("PumaPoC.json");
             string json = r.ReadToEnd();
-           var data = JsonConvert.DeserializeObject<Data[]>(json);
+           var sapdata = JsonConvert.DeserializeObject<Data[]>(json);
             
          
             //var data1 = JsonConvert.DeserializeObject<Adobe[]>(json);
-            System.Diagnostics.Debug.WriteLine("dfdfdfdfdfdffffdfdfdf :" + data);
-
-            foreach (var a in data)
+            System.Diagnostics.Debug.WriteLine("dfdfdfdfdfdffffdfdfdf :" + sapdata);
+            List<Data> data = new List<Data>();
+            foreach (var a in sapdata)
             {
-                int id = a.id;
 
+                string id = a.id;
 
-                if (id == 555)
+                if (a.name == "SAP Concur")
                 {
+
                     string name = a.name;
                     string source = a.source;
                     int Due = a.due;
@@ -44,25 +45,23 @@ namespace Puma_Poc.Controllers
                     var add = date.AddDays(Due);
                     string dateadd = add.ToString("dd'/'MM'/'yyyy");
 
-                    List<Data> data1 = new List<Data>()
+                    data.Add(new Data()
                     {
-                       new Data()
-                       {
+                        id = id,
+                        name = name,
+                        source = source,
+                        due = Due,
+                        title = title,
+                        resolved = resolved,
+                        date = dateadd
+                    });
 
-                                date = dateadd,
-                                source = source,
-                                due=Due,
-                                name =name,
-                                title =title,
-                                resolved=resolved,
 
-                       }
-                     };
-                    return data1;
+
                 }
 
             }
-            return null;
+            return data;
         }    
     }
 }

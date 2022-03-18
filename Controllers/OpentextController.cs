@@ -20,48 +20,49 @@ namespace Puma_Poc.Controllers
 
             StreamReader r = new StreamReader("PumaPoC.json");
             string json = r.ReadToEnd();
-            var data = JsonConvert.DeserializeObject<Data[]>(json);
+            var opentextData = JsonConvert.DeserializeObject<Data[]>(json);
 
             //Adobe.AdobeRoot adobe = JsonConvert.DeserializeObject<Adobe.AdobeRoot>(json);
 
-            System.Diagnostics.Debug.WriteLine("dfdfdfdfdfdffffdfdfdf :" + data);
+            System.Diagnostics.Debug.WriteLine("dfdfdfdfdfdffffdfdfdf :" + opentextData);
 
             // IEnumerable<Adobe> adobe = JsonConvert.DeserializeObject<IEnumerable<Adobe>>(json);
-            foreach (var a in data)
-            {
-                int id = a.id;
-               
 
-                if (id == 111)
+            List<Data> data = new List<Data>();
+            foreach (var a in opentextData)
+            {
+
+                string id = a.id;
+
+                if (a.name == "Opentext")
                 {
+
                     string name = a.name;
                     string source = a.source;
                     int Due = a.due;
                     string title = a.title;
-                    bool resolved=a.resolved;
+                    bool resolved = a.resolved;
                     var date = DateTime.Today;
                     var add = date.AddDays(Due);
                     string dateadd = add.ToString("dd'/'MM'/'yyyy");
 
-                    List<Data> data1 = new List<Data>()
-                   {
-                      new Data()
-                      {
+                    data.Add(new Data()
+                    {
+                        id = id,
+                        name = name,
+                        source = source,
+                        due = Due,
+                        title = title,
+                        resolved = resolved,
+                        date = dateadd
+                    });
 
-                               date = dateadd,
-                               source = source,
-                               due=Due,
-                               name =name,
-                               title =title,
-                               resolved=resolved,
-                             
-                      }
-                    };
-                    return data1;
+
+
                 }
 
             }
-            return null;
+            return data;
         }
     }
 }

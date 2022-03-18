@@ -12,10 +12,7 @@ namespace Puma_Poc.Controllers
         [HttpGet(Name = "GetData")]
         public IEnumerable<Outlook>? Get()
         {
-            //var due = 4;
-            //var add = date.AddDays(due);
-            // string dateadd = add.ToString("dd'/'MM'/'yyyy");
-
+           
             var date = DateTime.Today;
 
             System.Diagnostics.Debug.WriteLine("hello controller");
@@ -25,11 +22,11 @@ namespace Puma_Poc.Controllers
             string json = r.ReadToEnd();
             var data = JsonConvert.DeserializeObject<Outlook[]>(json);
 
-            //Adobe.AdobeRoot adobe = JsonConvert.DeserializeObject<Adobe.AdobeRoot>(json);
+            
 
             System.Diagnostics.Debug.WriteLine("dfdfdfdfdfdffffdfdfdf :" + data);
 
-            // IEnumerable<Adobe> adobe = JsonConvert.DeserializeObject<IEnumerable<Adobe>>(json);
+           
             foreach (var a in data)
             {
                 string id = a.id;

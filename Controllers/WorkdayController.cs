@@ -10,7 +10,7 @@ namespace Puma_Poc.Controllers
     [ApiController]
     public class WorkdayController : ControllerBase
     {
-        [HttpGet(Name = "GetDate")]
+        [HttpGet(Name = "GetworkdayData")]
         public IEnumerable<Data>? Get()
         {
            
@@ -20,24 +20,17 @@ namespace Puma_Poc.Controllers
             StreamReader r = new StreamReader("PumaPoC.json");
             string json = r.ReadToEnd();
             var data = JsonConvert.DeserializeObject<Data[]>(json);
-
-            
+            List<Data> workdayData = new List<Data>();
+            int count = 0;
             System.Diagnostics.Debug.WriteLine("dfdfdfdfdfdffffdfdfdf :" + data);
 
             foreach (var a in data)
             {
-                int count=0;
-                int id = a.id;
+               Console.WriteLine("name bata re baba isss controller ka -="+a.name);
                 if (a.name == "Workday")
                 {
-                    
-                        count++;
-                    
-                }
-                System.Diagnostics.Debug.WriteLine("hello controller"+"count:"+count);
-
-                if (id == 123)
-                {
+                    count++;
+                    string id = a.id;
                     string name = a.name;
                     string source = a.source;
                     int Due = a.due;
@@ -47,24 +40,19 @@ namespace Puma_Poc.Controllers
                     var add = date.AddDays(Due);
                     string dateadd = add.ToString("dd'/'MM'/'yyyy");
 
-                    List<Data> data1 = new List<Data>()
-                   {
-                      new Data()
-                      {
+                    workdayData.Add(new Data() { id = id, name = name, source = source, due = Due, title = title, resolved = resolved, date = dateadd, count = count });
 
-                               date = dateadd,
-                               source = source,
-                               due=Due,
-                               name =name,
-                               title =title,
-                               resolved=resolved,
-                      }
-                    };
-                    return data1;
+
+                    Console.WriteLine("inside m agaya workday.........  ");
+
                 }
 
+
             }
-            return null;
+
+            var x = JsonConvert.SerializeObject(workdayData);
+            Console.WriteLine( "workday data====="+x);
+            return workdayData;
         }
     }
 }
@@ -73,25 +61,24 @@ namespace Puma_Poc.Controllers
 
 
 
- /*  public IEnumerable<Data> Get()
-          {
-              var date = DateTime.Today;
-              var add = date.AddDays(4); //addded due days in static 
 
-              string dateadd = add.ToString("dd'/'MM'/'yyyy");
-
-              List<Data> data = new List<Data>()
-             {
-                 new Data() {
-                 Date=dateadd,
-                 Source="Workday",
-                 Name="Workday",
-                 Title="Absence Request - Employee Maria Musterfrau",
-                 Due=4,
-                 ImageUrl="https://d2c0jhkf0fswap.cloudfront.net/static/media/MicrosoftTeams-image_workday.cc261bd7341d76e9023e.png"
-                 }
-             };
-
-
-              return data;
-          }*/
+/* {
+    "id": "122",
+    "source": "workday",
+    "title": "Absence Request - Employee Maria Musterfrau22222222222",
+    "due": 4,
+    "resolved": false,
+    "imageUrl": "Adobe_Sign_icon.png",
+    "name": "Workday",
+    "date": "11-10-2021"
+  },
+  {
+    "id": "13",
+    "source": "workday",
+    "title": "Absence Request - Employee Maria Musterfrau33333",
+    "due": -4,
+    "resolved": false,
+    "imageUrl": "Adobe_Sign_icon.png",
+    "name": "Workday",
+    "date": "11-10-2021"
+  },*/

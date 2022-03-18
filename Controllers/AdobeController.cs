@@ -15,44 +15,24 @@ namespace Puma_Poc.Controllers
     {
         // GET: api/<AdobeController>
         [HttpGet(Name = "GetAdobe")]
-        public IEnumerable<Adobe>? Get()
+        public IEnumerable<Data>? Get()
         {
-          
-
-           
-
-            // string title = "Sign Employment Contract";
-          
-
             System.Diagnostics.Debug.WriteLine("hello controller");
 
             Console.WriteLine("hello world");
-            /*  var  adobe = JsonConvert.DeserializeObject<Adobe>(json);*/
-            /*Adobe adobe = JsonConvert.DeserializeObject<Adobe>(json); 
-            Console.WriteLine("Adobe:" + adobe);*/
-
+          
             StreamReader r = new StreamReader("PumaPoC.json");
             string json = r.ReadToEnd();
            var adobe = JsonConvert.DeserializeObject <Adobe[]>(json);
 
-             //Adobe.AdobeRoot adobe = JsonConvert.DeserializeObject<Adobe.AdobeRoot>(json);
-
             System.Diagnostics.Debug.WriteLine("dfdfdfdfdfdffffdfdfdf :"+adobe);
-
-            // IEnumerable<Adobe> adobe = JsonConvert.DeserializeObject<IEnumerable<Adobe>>(json);
-
-            // System.Diagnostics.Debug.WriteLine(adobe);
-
-            
-
+            List<Data> data = new List<Data>();
             foreach (var a in adobe)
             {
 
-                //Adobe? adobe = System.Text.Json.JsonSerializer.Deserialize<Adobe>(json);
-
                 string id = a.id;
 
-                if (id == "456")
+                if (a.name=="Adobe Sign")
                 {
                   
                     string name = a.name;
@@ -64,25 +44,23 @@ namespace Puma_Poc.Controllers
                     var add = date.AddDays(Due);
                     string dateadd = add.ToString("dd'/'MM'/'yyyy");
 
-                    List<Adobe> data = new List<Adobe>()
-                   {
-                      new Adobe()
-                      {
+                    data.Add(new Data() 
+                    { 
+                        id = id, 
+                        name = name, 
+                        source = source, 
+                        due = Due,
+                        title = title,
+                        resolved = resolved,
+                        date = dateadd
+                    });
 
-                               Date = dateadd,
-                               source = source,
-                               due=Due,
-                               name =name,
-                               title =title,
-                               resolved=resolved,
-                              
-                      }
-                    };
-                    return (IEnumerable<Adobe>?)data;
+
+                  
                 }  
              
             }
-            return null;
+            return data;
         }
     }
     
