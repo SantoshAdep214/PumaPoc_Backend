@@ -23,9 +23,7 @@ namespace Puma_Poc.Controllers
             StreamReader r = new StreamReader("PumaPoC.json");
             string json = r.ReadToEnd();
            var sapdata = JsonConvert.DeserializeObject<Data[]>(json);
-            
-         
-            //var data1 = JsonConvert.DeserializeObject<Adobe[]>(json);
+           
             System.Diagnostics.Debug.WriteLine("dfdfdfdfdfdffffdfdfdf :" + sapdata);
             List<Data> data = new List<Data>();
             foreach (var a in sapdata)
