@@ -433,7 +433,7 @@
       "outputPath": "C:\\Users\\santosh.adap\\Pictures\\Puma_POC\\Puma_Poc\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\santosh.adap\\Pictures\\Puma_POC\\PumaPoC\\NuGet.Config",
+        "C:\\Users\\santosh.adap\\Pictures\\Puma_POC\\PumPocAngular\\NuGet.Config",
         "C:\\Users\\santosh.adap\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
